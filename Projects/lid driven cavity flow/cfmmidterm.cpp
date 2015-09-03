@@ -444,6 +444,114 @@ write_v << "\n";
 }
 write_v.close();
 
+for (int i=0; i<nodes; i++)
+{
+
+
+delete[] x[i] ;
+delete[] y[i] ;
+delete[] eta[i];
+delete[] xita[i];
+delete[] G[i] ;
+delete[] J[i] ;
+delete[] xita_x[i];
+delete[] xita_y[i];
+delete[] eta_x[i];
+delete[] eta_y[i];
+delete[] x_xita[i];
+delete[] y_eta[i];
+delete[] x_eta[i];
+delete[] y_xita[i];
+delete[] uold[i];
+delete[] vold[i] ;
+delete[] pold[i];
+
+delete[] u1[i];
+delete[] v1[i];
+delete[] p1[i] ;
+
+
+delete[] u2[i];
+delete[] v2[i];
+delete[] p2[i];
+
+delete[] u3[i] ;
+delete[] v3[i] ;
+delete[] p3[i];
+
+delete[] unew[i];
+delete[] vnew[i] ;
+delete[] pnew[i] ;
+
+delete[] U[i] ;
+delete[] V[i];
+delete[] R_ca[i] ; 
+delete[] R_cu[i];
+delete[] R_cv[i];
+delete[] g_11[i];
+delete[] g_12[i];
+delete[] g_22[i];
+ 
+delete[] dis_1[i];
+delete[] dis_2[i];
+delete[] dis_3[i];
+
+delete[] errp[i];
+delete[] erru[i];
+delete[] errv[i];
+
+}
+delete[] x ;
+delete[] y ;
+delete[] eta;
+delete[] xita;
+delete[] G ;
+delete[] J ;
+delete[] xita_x;
+delete[] xita_y;
+delete[] eta_x;
+delete[] eta_y;
+delete[] x_xita;
+delete[] y_eta;
+delete[] x_eta;
+delete[] y_xita;
+delete[] uold;
+delete[] vold ;
+delete[] pold;
+
+delete[] u1;
+delete[] v1;
+delete[] p1;
+
+
+delete[] u2;
+delete[] v2;
+delete[] p2;
+
+delete[] u3;
+delete[] v3;
+delete[] p3;
+
+delete[] unew;
+delete[] vnew;
+delete[] pnew;
+
+delete[] U ;
+delete[] V;
+delete[] R_ca; 
+delete[] R_cu;
+delete[] R_cv;
+delete[] g_11;
+delete[] g_12;
+delete[] g_22;
+delete[] dis_1;
+delete[] dis_2;
+delete[] dis_3;
+
+delete[] errp;
+delete[] erru;
+delete[] errv;
+
 
 
 

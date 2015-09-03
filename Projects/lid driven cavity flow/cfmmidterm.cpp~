@@ -38,9 +38,9 @@ double** x;
 double** y;
 double* dx;
 
-double* errP = new double[60000];
-double* errU = new double[60000];
-double* errV = new double[60000];
+double* errP = new double[6000000];
+double* errU = new double[6000000];
+double* errV = new double[6000000];
 
 double** eta;
 double** xita;
@@ -234,23 +234,14 @@ bcsuv(nodes,uold,vold,pold);
 
 
 int a=0;
-//for(int t=0;t< 600000;t++)
+for(int t=0;t< 60000000;t++)
 	
-//{
+{
 
 bcsuv(nodes,u1,v1,p1);
-for (int i=0; i<nodes;i++)
-{
-	for (int j=0;j<nodes;j++)
-	{
-		std::cout << u1[i][j];
-		
 
-	}
-std::cout << "\n";
 
-}
-/*
+
 curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  uold,  vold,  pold, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2);
 
 
@@ -258,9 +249,9 @@ for(int i = 1; i < nodes-1; i++)
 {
 	for(int j = 1; j < nodes-1; j++){
 
-		p1[i][j] = pold[i][j] + (1/4)*delta_t*R_ca[i][j];
-		u1[i][j] = uold[i][j] + (1/4)*delta_t*R_cu[i][j];;
-		v1[i][j] = vold[i][j] + (1/4)*delta_t*R_cv[i][j];; 
+		p1[i][j] = pold[i][j] + double(1/4)*delta_t*R_ca[i][j];
+		u1[i][j] = uold[i][j] + double(1/4)*delta_t*R_cu[i][j];
+		v1[i][j] = vold[i][j] + double(1/4)*delta_t*R_cv[i][j];
 		
 		}
 }
@@ -276,9 +267,9 @@ for(int i = 1; i < nodes-1; i++)
 {
 	for(int j = 1; j < nodes-1; j++){
 
-		p2[i][j] = pold[i][j] + (1/3) * delta_t * R_ca[i][j];
-		u2[i][j] = uold[i][j] + (1/3) * delta_t * R_cu[i][j];
-		v2[i][j] = vold[i][j] + (1/3) * delta_t * R_cv[i][j]; 
+		p2[i][j] = pold[i][j] + double(1/3) * delta_t * R_ca[i][j];
+		u2[i][j] = uold[i][j] + double(1/3) * delta_t * R_cu[i][j];
+		v2[i][j] = vold[i][j] + double(1/3) * delta_t * R_cv[i][j]; 
 		
 		}
 }
@@ -294,9 +285,9 @@ for(int i = 1; i < nodes-1; i++)
 {
 	for(int j = 1; j < nodes-1; j++){
 
-		p3[i][j] = pold[i][j] + (1/2) * delta_t * R_ca[i][j];
-		u3[i][j] = uold[i][j] + (1/2) * delta_t * R_cu[i][j];
-		v3[i][j] = vold[i][j] + (1/2) * delta_t * R_cv[i][j];
+		p3[i][j] = pold[i][j] + double(1/2) * delta_t * R_ca[i][j];
+		u3[i][j] = uold[i][j] + double(1/2) * delta_t * R_cu[i][j];
+		v3[i][j] = vold[i][j] + double(1/2) * delta_t * R_cv[i][j];
 		
 		}
 }
@@ -383,10 +374,10 @@ std::cout << "Error in u = " << errV[a] << "\n";
 		
 				}
 			}
-*/
-//a++;
-//}
-/*
+
+a++;
+}
+
 
 std::ofstream writex("x.dat");
 // Write numbers as +x.<13digits>e+00 (width 20)
@@ -453,12 +444,113 @@ write_v << "\n";
 }
 write_v.close();
 
+for (int i=0; i<nodes; i++)
+{
 
 
+delete[] x[i] ;
+delete[] y[i] ;
+delete[] eta[i];
+delete[] xita[i];
+delete[] G[i] ;
+delete[] J[i] ;
+delete[] xita_x[i];
+delete[] xita_y[i];
+delete[] eta_x[i];
+delete[] eta_y[i];
+delete[] x_xita[i];
+delete[] y_eta[i];
+delete[] x_eta[i];
+delete[] y_xita[i];
+delete[] uold[i];
+delete[] vold[i] ;
+delete[] pold[i];
+
+delete[] u1[i];
+delete[] v1[i];
+delete[] p1[i] ;
 
 
-*/
+delete[] u2[i];
+delete[] v2[i];
+delete[] p2[i];
 
+delete[] u3[i] ;
+delete[] v3[i] ;
+delete[] p3[i];
+
+delete[] unew[i];
+delete[] vnew[i] ;
+delete[] pnew[i] ;
+
+delete[] U[i] ;
+delete[] V[i];
+delete[] R_ca[i] ; 
+delete[] R_cu[i];
+delete[] R_cv[i];
+delete[] g_11[i];
+delete[] g_12[i];
+delete[] g_22[i];
+delete[] 
+delete[] dis_1[i];
+delete[] dis_2[i];
+delete[] dis_3[i];
+
+delete[] errp[i];
+delete[] erru[i];
+delete[] errv[i];
+
+}
+delete[] x ;
+delete[] y ;
+delete[] eta;
+delete[] xita;
+delete[] G ;
+delete[] J ;
+delete[] xita_x;
+delete[] xita_y;
+delete[] eta_x;
+delete[] eta_y;
+delete[] x_xita;
+delete[] y_eta;
+delete[] x_eta;
+delete[] y_xita;
+delete[] uold;
+delete[] vold ;
+delete[] pold;
+
+delete[] u1;
+delete[] v1;
+delete[] p1;
+
+
+delete[] u2;
+delete[] v2;
+delete[] p2;
+
+delete[] u3;
+delete[] v3;
+delete[] p3;
+
+delete[] unew;
+delete[] vnew;
+delete[] pnew;
+
+delete[] U ;
+delete[] V;
+delete[] R_ca; 
+delete[] R_cu;
+delete[] R_cv;
+delete[] g_11;
+delete[] g_12;
+delete[] g_22;
+delete[] dis_1;
+delete[] dis_2;
+delete[] dis_3;
+
+delete[] errp;
+delete[] erru;
+delete[] errv;
 
 
 

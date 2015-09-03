@@ -43,13 +43,7 @@ x[i] = x[i-1] + delta_x ;
 y[i] = y[i-1] + delta_y;
 }
  
-//print the array
- /* for(int i = 0; i < nodes; i++)
-  {
-    
-    std::cout << "Array[" << i << "] => " << y[i] << std::endl;
-  }
-*/
+
 
 
 for(int i = 0; i < nodes; i++)
@@ -60,20 +54,6 @@ analytical[i][j] = (double(-1*0.1*cos(x[i]))/double(sqrt(1-0.5)))*exp(-y[j]*sqrt
 }
 }
 
-//std::cout << analytical[49][49] << "\n";
-//print the matrix
-/*
-for (int i=0; i<nodes;i++)
-{
-	for (int j=0;j<nodes;j++)
-	{
-		std::cout << analytical[i][j];
-		
-
-	}
-std::cout << "\n";
-
-}*/
 
 double B,p; 
 
@@ -146,23 +126,8 @@ for(int i = 1; i < nodes-1; i++)
 
 // right most boundary
 pnew[nodes-1][nodes-1] = p*(2*pnew[nodes-2][nodes-1] + 2*B*pnew[nodes-1][nodes-2]);
-//std::cout << pnew[0][14] << "\n";
-/*
-std::ofstream write_file("Output.dat");
-// Write numbers as +x.<13digits>e+00 (width 20)
-write_file.setf(std::ios::scientific);
-write_file.precision(16);
 
-assert(write_file.is_open());
-for (int i=0; i< nodes; i++)
-{
-for(int j=0; j< nodes; j++){
-write_file << pnew[i][j] << " "; 
-}
-write_file << "\n";
-}
-write_file.close();
-*/
+
 
 for(int i = 0; i < nodes; i++)
 {
@@ -171,8 +136,6 @@ for(int i = 0; i < nodes; i++)
 		psor[i][j] = (1-w)*pold[i][j] + w*pnew[i][j] ;
 		}
 }
-
-//std::cout << psor[44][9] << "\n";
 
 
 for(int i = 0; i < nodes; i++)
@@ -204,9 +167,6 @@ if(err < 1.e-8){
 std::cout << "Solution is converged" << "\n";
 break;
 }
-
-
-//std::cout << psor[29][14] << "\n";
 
 
 

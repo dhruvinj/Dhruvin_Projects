@@ -38,13 +38,7 @@ x[i] = x[i-1] + delta_x ;
 y[i] = y[i-1] + delta_y;
 }
  
-//print the array
- /* for(int i = 0; i < nodes; i++)
-  {
-    
-    std::cout << "Array[" << i << "] => " << y[i] << std::endl;
-  }
-*/
+
 
 
 for(int i = 0; i < nodes; i++)
@@ -63,20 +57,6 @@ p_ans_x[i][j] = 0.0;
 }
 }
 
-//std::cout << analytical[49][49] << "\n";
-//print the matrix
-/*
-for (int i=0; i<nodes;i++)
-{
-	for (int j=0;j<nodes;j++)
-	{
-		std::cout << analytical[i][j];
-		
-
-	}
-std::cout << "\n";
-
-}*/
 
 double B,p; 
 
@@ -86,7 +66,7 @@ double* aa = new double[nodes];
 double* bb = new double[nodes];
 double* cc = new double[nodes];
 double* dd = new double[nodes];
-//std::cout << B << "\n";
+
 // point 1 
 for(int z=0; z< 100000; z++)
 {
@@ -258,7 +238,6 @@ for(int z=0; z< 100000; z++)
 	p_ans_y[i][j] = dd[j];
 	}
 	}
-	//std::cout << p_ans_y[21][45] << "\n";
 
 
 
@@ -304,23 +283,7 @@ for(int z=0; z< 100000; z++)
 
 
 }
-/*
-std::ofstream write_file("adi.dat");
-// Write numbers as +x.<13digits>e+00 (width 20)
-write_file.setf(std::ios::scientific);
-write_file.precision(16);
 
-assert(write_file.is_open());
-for (int i=0; i< nodes; i++)
-{
-for(int j=0; j< nodes; j++){
-write_file << p_ans_y[i][j] << " "; 
-}
-write_file << "\n";
-
-}
-write_file.close();
-*/
 for ( int i = 0; i < nodes; i++ )
 	{
 	  for ( int j = 0; j < nodes; j++ )
@@ -389,6 +352,10 @@ for(int i = 0; i < nodes; i++)
 		}
 }
 
+delete[] aa;
+delete[] bb;
+delete[] cc;
+delete[] dd;
 
 std::ofstream write_file("adiu.dat");
 // Write numbers as +x.<13digits>e+00 (width 20)
