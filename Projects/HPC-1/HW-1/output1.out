@@ -1,0 +1,93 @@
+SLURM_JOB_ID=48938
+SLURM_JOB_NODELIST=cpn-p28-07
+SLURM_NNODES=1
+SLURMTMPDIR=/scratch/48938
+working directory = /gpfs/user/dhruvinj/dhruvin_HPC
+Launch LENS_XX with srun
+NPROCS=1
+Problem  2 Solution: Output time in milliseconds
+gcc compiler row major matrix addition
+0
+10
+650
+1970
+2780
+gcc compiler row major matrix addition with optimization -O3
+0
+0
+360
+1060
+1500
+gcc compiler column major matrix addition
+0
+30
+6330
+16230
+39870
+gcc compiler column major matrix addition with optimization -O3
+0
+30
+6270
+16390
+30270
+intel compiler row major matrix addition
+0
+0
+370
+1170
+1560
+intel compiler row major matrix addition with optimization -O2
+/gpfs/user/dhruvinj/dhruvin_HPC/./runintel.sh: line 14: ./q2/Run6: No such file or directory
+intel compiler column major matrix addition
+/gpfs/user/dhruvinj/dhruvin_HPC/./runintel.sh: line 16: ./q2/Run7: No such file or directory
+intel compiler column major matrix addition with optimization -O2
+/gpfs/user/dhruvinj/dhruvin_HPC/./runintel.sh: line 18: ./q2/Run8: No such file or directory
+Problem  3 Solution: Output time in milliseconds and dot product of two vectors
+gcc compiler dot product
+4e+06
+10
+8e+06
+10
+1.2e+07
+30
+1.6e+07
+20
+2e+07
+40
+gcc compiler dot product with optimization -O3
+4e+06
+0
+8e+06
+0
+1.2e+07
+10
+1.6e+07
+10
+2e+07
+10
+intel compiler dot product with ddot MKl library
+./q3/Run3: error while loading shared libraries: libmkl_intel_lp64.so: cannot open shared object file: No such file or directory
+gcc compiler dot product with ddot
+0
+4e+06
+0
+8e+06
+10
+1.2e+07
+10
+1.6e+07
+10
+2e+07
+Problem  4 Solution: Output time in milliseconds
+gcc compiler matrix matrix
+0
+950
+3120
+9130
+gcc compiler matrix multiplication with optimization -O3
+/gpfs/user/dhruvinj/dhruvin_HPC/./runintel.sh: line 36: 74932 Segmentation fault      ./q4/Run2
+intel compiler matrix multiplication with dgemm
+./q4/Run3: error while loading shared libraries: libmkl_intel_lp64.so: cannot open shared object file: No such file or directory
+srun: error: cpn-p28-07: task 0: Exited with exit code 127
+srun: Terminating job step 48938.1
+All Done!

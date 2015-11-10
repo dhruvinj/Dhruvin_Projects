@@ -1,0 +1,6 @@
+all: Run
+
+Run: blasq3.cpp
+
+	icpc blasq3.cpp -o Run  -DMKL_ILP64 -I${MKLROOT}/include   -L${MKLROOT}/lib/intel64 -lmkl_intel_ilp64 -lmkl_core -lmkl_sequential -lpthread -lm 
+
