@@ -22,3 +22,5 @@ Run7: q2col.cpp
 
 Run8: q2col.cpp
 	icpc q2col.cpp -O2 -o run8
+clean:
+	rm  Run1 Run2 Run3 Run4 Run5 Run6 Run7 Run8
