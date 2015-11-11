@@ -1,0 +1,83 @@
+MPI version with tasks =2
+Number of intervals:10000000000
+Computed PI  3.14159
+Elapsed time (s) = 37.3888
+MPI version with tasks =4
+Number of intervals:10000000000
+Computed PI  3.14159
+Elapsed time (s) = 19.0504
+MPI version with tasks =6
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.2
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =8
+Number of intervals:10000000000
+Computed PI  3.14159
+Elapsed time (s) = 10.4227
+MPI version with tasks =10
+Number of intervals:10000000000
+Computed PI  3.14159
+Elapsed time (s) = 8.64019
+MPI version with tasks =12
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.5
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =14
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.6
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =16
+Number of intervals:10000000000
+Computed PI  3.14159
+Elapsed time (s) = 5.41016
+MPI version with tasks =18
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.8
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =20
+Number of intervals:10000000000
+Computed PI  3.14159
+Elapsed time (s) = 4.32878
+MPI version with tasks =22
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.10
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =24
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.11
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =26
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.12
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =28
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.13
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =30
+Number of intervals:10000000000
+The number of process must divide exactly 10000000000
+srun: error: cpn-p28-08: task 0: Exited with exit code 1
+srun: Terminating job step 53297.14
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+MPI version with tasks =32
+Number of intervals:10000000000
+Computed PI  3.14159
+Elapsed time (s) = 2.71316
+All Done!

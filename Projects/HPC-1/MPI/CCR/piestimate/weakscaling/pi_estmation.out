@@ -1,0 +1,65 @@
+MPI version with tasks =2
+Number of intervals:20000000
+Computed PI  3.14159
+Elapsed time (s) = 0.116327
+MPI version with tasks =4
+Number of intervals:40000000
+Computed PI  3.14159
+Elapsed time (s) = 0.116744
+MPI version with tasks =6
+Number of intervals:60000000
+Computed PI  3.14159
+Elapsed time (s) = 0.110335
+MPI version with tasks =8
+Number of intervals:80000000
+Computed PI  3.14159
+Elapsed time (s) = 0.113974
+MPI version with tasks =10
+Number of intervals:100000000
+Computed PI  3.14159
+Elapsed time (s) = 0.107646
+MPI version with tasks =12
+Number of intervals:120000000
+Computed PI  3.14159
+Elapsed time (s) = 0.118263
+MPI version with tasks =14
+Number of intervals:140000000
+Computed PI  3.14159
+Elapsed time (s) = 0.116872
+MPI version with tasks =16
+Number of intervals:160000000
+Computed PI  3.14159
+Elapsed time (s) = 0.116945
+MPI version with tasks =18
+Number of intervals:180000000
+Computed PI  3.14159
+Elapsed time (s) = 0.110126
+MPI version with tasks =20
+Number of intervals:200000000
+Computed PI  3.14159
+Elapsed time (s) = 0.107237
+MPI version with tasks =22
+Number of intervals:220000000
+Computed PI  3.14159
+Elapsed time (s) = 0.10881
+MPI version with tasks =24
+Number of intervals:240000000
+Computed PI  3.14159
+Elapsed time (s) = 0.109192
+MPI version with tasks =26
+Number of intervals:260000000
+Computed PI  3.14159
+Elapsed time (s) = 0.10551
+MPI version with tasks =28
+Number of intervals:28000000
+Computed PI  3.14159
+Elapsed time (s) = 0.0155249
+MPI version with tasks =30
+Number of intervals:300000000
+Computed PI  3.14159
+Elapsed time (s) = 0.117542
+MPI version with tasks =32
+Number of intervals:320000000
+Computed PI  3.14159
+Elapsed time (s) = 0.107439
+All Done!
