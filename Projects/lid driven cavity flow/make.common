@@ -1,0 +1,7 @@
+all: RUN
+
+RUN: cfmmidterm.cpp
+
+	g++ -o  RUN  cfmmidterm.cpp -O2
+clean: 
+	rm RUN
