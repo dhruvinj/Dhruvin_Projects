@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
   double pi;
   pi= M_PI;
 
-  const int nodes = 81;
+  const int nodes = 61;
   double r =1;
 
   double delta_t;
@@ -236,7 +236,7 @@ int main(int argc, char* argv[])
 
   gridgeneration(nodes, r, x , y, dx,dy);
 
-  Getdata Data(100, 0.5, 0.005, 0.1, 0.5);
+  Getdata Data(500, 0.01, 0.01, 0.1, 0.2);
 
   double Re = Data.GetRe() ; 
   double res= Data.Getres() ; 
@@ -267,7 +267,7 @@ int main(int argc, char* argv[])
       bcsuv(nodes,u1,v1,p1);
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  uold,  vold,  pold, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+    //  residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
       for(int i = 1; i < nodes-1; i++)
 	{
 	  for(int j = 1; j < nodes-1; j++){
@@ -286,7 +286,7 @@ int main(int argc, char* argv[])
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u1,  v1,  p1, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
 
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -306,7 +306,7 @@ int main(int argc, char* argv[])
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u2,  v2,  p2, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
 
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+     // residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -325,7 +325,7 @@ int main(int argc, char* argv[])
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u3,  v3,  p3, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2,Re);
       dissipation(nodes, u3, v3,  p3, U, V, g_11, g_22, J,dis_1,dis_2,dis_3,episilon);
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
 
       for(int i = 1; i < nodes-1; i++)
 	{
