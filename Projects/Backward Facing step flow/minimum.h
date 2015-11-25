@@ -9,7 +9,7 @@ double minimum(double a, double b)
 {
   double min;
 
-  if (a < b)
+  if (a <= b)
     {
       min = a;
     }

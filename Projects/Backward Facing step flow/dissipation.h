@@ -13,7 +13,7 @@ void dissipation(int nodes, double** u, double** v, double** p, double** U, doub
 
 {
 
-
+//std::cout << "The dissipation smoothing Number = " << episilon << "\n";
   int z=3;
 
   double D_1[z][nodes][nodes];

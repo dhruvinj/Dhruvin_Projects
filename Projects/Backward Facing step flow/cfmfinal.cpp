@@ -15,7 +15,7 @@
 #include "residualsmoothing.h"
 
 void dissipation(int nodes, double** u, double** v, double** p, double** U, double** V, double** g_11, double** g_22, double** J, double** dis_1, double** dis_2, double** dis_3, double episilon);
-void bcsp(int nodes, double** p);
+void bcsp(int nodes, double** p,double** u,double** v);
 void gridgeneration(int nodes, double r,double** x,double** y,double* dx,double* dy);
 
 void bcsuv(int nodes, double** u,double** v,double** p);
@@ -236,27 +236,26 @@ int main(int argc, char* argv[])
 
   gridgeneration(nodes, r, x , y, dx,dy);
 
-  Getdata Data(500, 0.01, 0.01, 0.1, 0.2);
+  Getdata Data(400, 0.1, 0.01, 0.01, 0.01);
 
-  double Re = Data.GetRe() ; 
-  double res= Data.Getres() ; 
-  double CFL= Data.GetCFL() ; 
-  double VN = Data.GetVN() ; 
-  double episilon = Data.Getepisilon() ; 
+  double Reynold = Data.GetRe() ; 
+  double residual = Data.Getres() ; 
+  double CFLnum = Data.GetCFL() ; 
+  double VNnum  = Data.GetVN() ; 
+  double epi = Data.Getepisilon() ; 
 
   //double Re = Getdata::GetRe() ;
   /*
-    std::cout << Re << "\n";
-    std::cout << res << "\n";
-    std::cout << CFL << "\n";
-    std::cout << VN << "\n";
-    std::cout << episilon << "\n";
+    std::cout << "The Reynolds Number = "<< Reynold << "\n";
+    std::cout << "The Residual Smoothing Number = " << residual << "\n";
+    std::cout << "The CFL Number = "<< CFLnum << "\n";
+    std::cout << "The Von Neumann Number = " << VNnum << "\n";
+    std::cout << "The dissipation smoothing Number = " << epi << "\n";
   */
   metrics(x, y,nodes, eta, xita, G, J,  xita_x,  xita_y,  eta_x,  eta_y,  x_xita,  y_eta,x_eta,y_xita);
  
 
   bcsuv(nodes,uold,vold,pold);
-
 
 
   int a=0;
@@ -265,9 +264,9 @@ int main(int argc, char* argv[])
     {
 
       bcsuv(nodes,u1,v1,p1);
-      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  uold,  vold,  pold, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
-      localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-    //  residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  uold,  vold,  pold, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Reynold);
+      localtime( nodes, U, V,  g_11,  g_22, J, dt, Reynold, CFLnum,VNnum);
+     // residualsmoothing(nodes,  R_ca,  R_cu, R_cv, residual);
       for(int i = 1; i < nodes-1; i++)
 	{
 	  for(int j = 1; j < nodes-1; j++){
@@ -283,10 +282,10 @@ int main(int argc, char* argv[])
 
 
       bcsuv(nodes,u2,v2,p2);
-      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u1,  v1,  p1, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
+      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u1,  v1,  p1, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Reynold);
 
-      localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      localtime( nodes, U, V,  g_11,  g_22, J, dt, Reynold, CFLnum,VNnum);
+      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, residual);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -303,10 +302,10 @@ int main(int argc, char* argv[])
 
 
       bcsuv(nodes,u3,v3,p3);
-      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u2,  v2,  p2, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
+      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u2,  v2,  p2, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Reynold);
 
-      localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-     // residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      localtime( nodes, U, V,  g_11,  g_22, J, dt, Reynold, CFLnum,VNnum);
+      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, residual);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -322,10 +321,10 @@ int main(int argc, char* argv[])
       bcsp(nodes, p3,u3,v3);
 
       bcsuv(nodes,unew,vnew,pnew);
-      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u3,  v3,  p3, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2,Re);
-      dissipation(nodes, u3, v3,  p3, U, V, g_11, g_22, J,dis_1,dis_2,dis_3,episilon);
-      localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u3,  v3,  p3, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2,Reynold);
+      dissipation(nodes, u3, v3,  p3, U, V, g_11, g_22, J,dis_1,dis_2,dis_3,epi);
+      localtime( nodes, U, V,  g_11,  g_22, J, dt, Reynold, CFLnum,VNnum);
+     // residualsmoothing(nodes,  R_ca,  R_cu, R_cv, residual);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -407,7 +406,7 @@ int main(int argc, char* argv[])
       a++;
     }
 
-  /*
+  
     std::ofstream writex("x.dat");
     // Write numbers as +x.<13digits>e+00 (width 20)
     writex.setf(std::ios::scientific);
@@ -472,7 +471,7 @@ int main(int argc, char* argv[])
     write_v << "\n";
     }
     write_v.close();
-  */
+  
 
   for (int i=0; i<nodes; i++)
     {

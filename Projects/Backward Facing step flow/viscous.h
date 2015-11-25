@@ -12,7 +12,7 @@ void viscous(double** x,double** y,int nodes, double** eta, double** xita, doubl
   int z=3;
   double Ev1[z][nodes][nodes];
 
-
+// std::cout << "The Reynolds Number = "<< Re << "\n";
   double Ev2[z][nodes][nodes];
 
   for(int k=0;k<3;k++)
@@ -116,6 +116,7 @@ void viscous(double** x,double** y,int nodes, double** eta, double** xita, doubl
 	g_22n[i][j] = pow(eta_xnp[i][j],2) + pow(eta_ynp[i][j],2);
 
       }
+      }
 
       for(int i = 0; i < nodes-1; i++)
 	{
@@ -169,4 +170,4 @@ void viscous(double** x,double** y,int nodes, double** eta, double** xita, doubl
 
 
 
-}
+
