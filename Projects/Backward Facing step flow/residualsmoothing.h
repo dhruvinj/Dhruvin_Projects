@@ -14,7 +14,16 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
   double U_ca[nodes][nodes];
   double U_cu[nodes][nodes];
   double U_cv[nodes][nodes];
+ for(int i = 0; i < nodes; i++)
+        {
+	  for(int j = 0; j < nodes; j++){
 
+	    U_ca[i][j]  = 0;
+	    U_cu[i][j]  = 0;
+	    U_cv[i][j] = 0;
+	   
+	  }
+        }
 
   double* aa = new double[nodes];
   double* bb = new double[nodes];

@@ -15,7 +15,7 @@
 #include "residualsmoothing.h"
 
 void dissipation(int nodes, double** u, double** v, double** p, double** U, double** V, double** g_11, double** g_22, double** J, double** dis_1, double** dis_2, double** dis_3, double episilon);
-void bcsp(int nodes, double** p);
+void bcsp(int nodes, double** p,double** u,double** v);
 void gridgeneration(int nodes, double r,double** x,double** y,double* dx,double* dy);
 
 void bcsuv(int nodes, double** u,double** v,double** p);
@@ -236,7 +236,7 @@ int main(int argc, char* argv[])
 
   gridgeneration(nodes, r, x , y, dx,dy);
 
-  Getdata Data(500, 0.01, 0.01, 0.1, 0.2);
+  Getdata Data(100, 0.1, 0.01, 0.1, 0.1);
 
   double Re = Data.GetRe() ; 
   double res= Data.Getres() ; 
@@ -267,7 +267,7 @@ int main(int argc, char* argv[])
       bcsuv(nodes,u1,v1,p1);
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  uold,  vold,  pold, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-    //  residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
       for(int i = 1; i < nodes-1; i++)
 	{
 	  for(int j = 1; j < nodes-1; j++){
@@ -286,7 +286,7 @@ int main(int argc, char* argv[])
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u1,  v1,  p1, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
 
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -306,7 +306,7 @@ int main(int argc, char* argv[])
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u2,  v2,  p2, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2, Re);
 
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-     // residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -325,7 +325,7 @@ int main(int argc, char* argv[])
       curvilinearrhs(x, y, nodes,eta, xita, G, J, xita_x, xita_y, eta_x,  eta_y,  x_xita,  y_eta, x_eta, y_xita,  u3,  v3,  p3, R_ca, R_cu,  R_cv,  U,  V,  g_11,  g_12,  g_22,  dEs1,dEs2, dEv1,dEv2,Re);
       dissipation(nodes, u3, v3,  p3, U, V, g_11, g_22, J,dis_1,dis_2,dis_3,episilon);
       localtime( nodes, U, V,  g_11,  g_22, J, dt, Re, CFL,VN);
-      //residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
+      residualsmoothing(nodes,  R_ca,  R_cu, R_cv, res);
 
       for(int i = 1; i < nodes-1; i++)
 	{
@@ -340,9 +340,9 @@ int main(int argc, char* argv[])
 
       bcsp(nodes, pnew,unew,vnew);
 
-      for(int i = 1; i < nodes-1; i++)
+      for(int i = 0; i < nodes; i++)
 	{
-	  for(int j = 1; j < nodes-1; j++){
+	  for(int j = 0; j < nodes; j++){
 
 	    errp[i][j] = pow(pnew[i][j] - pold[i][j],2);
 	    erru[i][j] = pow(unew[i][j] - uold[i][j],2);
@@ -357,9 +357,9 @@ int main(int argc, char* argv[])
 
 
 
-      for(int i = 1; i < nodes-1; i++)
+      for(int i = 0; i < nodes; i++)
 	{
-	  for(int j = 1; j < nodes-1; j++){
+	  for(int j = 0; j < nodes; j++){
 
 	    sump +=  errp[i][j] ;
 	    sumu += erru[i][j] ;
