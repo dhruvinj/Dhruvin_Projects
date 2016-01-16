@@ -2,6 +2,6 @@ all: Run
 
 Run: cfmfinal.cpp
 
-	g++ -o Run  cfmfinal.cpp 
+	g++ -O2 -o Run  cfmfinal.cpp 
 clean: 
 	rm Run

@@ -1,0 +1,99 @@
+--------------------------------------------------------------------------------------------------------------
+QUESO Library: Version = 0.53.1 (5301)
+
+External Release
+
+Build Date   = 2015-08-19 11:26
+Build Host   = zoidberg.eng.buffalo.edu
+Build User   = dhruvinj
+Build Arch   = x86_64-unknown-linux-gnu
+Build Rev    = N/A
+
+C++ Config   = mpic++ -g -O2 -Wall
+
+Trilinos DIR = 
+GSL Libs     = -L/zoidberg1/data/shared/software/libs/gsl/1.16/gcc/4.8.4/lib -lgsl -lgslcblas -lm
+GRVY DIR     = 
+GLPK DIR     = /zoidberg1/data/shared/software/libs/glpk/4.55/gcc/4.8.4
+HDF5 DIR     = no
+--------------------------------------------------------------------------------------------------------------
+Beginning run at Wed Oct 14 12:00:00 2015
+
+MPI node of worldRank 0 has fullRank 0, belongs to subEnvironment of id 0, and has subRank 0
+MPI node of worldRank 0 belongs to sub communicator with full ranks 0
+MPI node of worldRank 0 also belongs to inter0 communicator with full ranks 0, and has inter0Rank 0
+
+*** Warning, this code is deprecated and likely to be removed in future library versions:  ../../../Queso/queso/src/core/src/GslMatrix.C, line 454, compiled Aug 19 2015 at 11:26:15 ***
+WARNING: 'equilibrate(ThermoPhase&, ...)' is deprecated. Use ThermoPhase::equilibrate instead. To be removed after Cantera 2.2.
+0.9 2011.71
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> domain 0 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    Mass Flux:       0.4933 kg/m^2/s 
+    Temperature:        300 K 
+    Mass Fractions: 
+                      O2      0.3715 
+                      O3      0.6285 
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> flame <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    Pressure:   1.013e+05 Pa 
+
+-------------------------------------------------------------------------------
+        z             u           V           T      lambda           O 
+-------------------------------------------------------------------------------
+          0         0.3           0         300           0           0 
+      0.005       1.064           0       882.2           0           0 
+       0.01       1.828           0        1464           0           0 
+      0.015       2.546           0        2012           0           0 
+       0.02       2.546           0        2012           0           0 
+      0.021       2.546           0        2012           0           0 
+
+-------------------------------------------------------------------------------
+        z            O2          O3 
+-------------------------------------------------------------------------------
+          0      0.3715      0.6285 
+      0.005      0.3715      0.6285 
+       0.01      0.3715      0.6285 
+      0.015      0.3715      0.6285 
+       0.02      0.3715      0.6285 
+      0.021      0.3715      0.6285 
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> domain 2 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+-------------------------------------------------------------------------------
+        z    outlet dummy 
+-------------------------------------------------------------------------------
+          0           0 
+
+..............................................................................
+Attempt Newton solution of steady-state problem...    success.
+
+Problem solved on [7] point grid(s).
+
+..............................................................................
+grid refinement disabled.
+
+..............................................................................
+Attempt Newton solution of steady-state problem...    failure. 
+Take 1 timesteps       1.5e-05      3.994 
+Attempt Newton solution of steady-state problem...    failure. 
+Take 2 timesteps     3.375e-05      3.993 
+Attempt Newton solution of steady-state problem...    failure. 
+Take 5 timesteps     0.0002563      3.988 
+Attempt Newton solution of steady-state problem...    failure. 
+Take 10 timesteps       0.01478       3.67 
+Attempt Newton solution of steady-state problem...    failure. 
+Take 10 timesteps        0.2841       2.42 
+Attempt Newton solution of steady-state problem...    failure. 
+Take 10 timesteps        0.5119      1.701 
+Attempt Newton solution of steady-state problem...    failure. 
+Take 10 timesteps         1.845     0.8013 
+Attempt Newton solution of steady-state problem...    failure. 
+Take 10 timesteps         6.649    -0.4229 
+Attempt Newton solution of steady-state problem...

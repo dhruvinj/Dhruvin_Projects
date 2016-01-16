@@ -57,7 +57,7 @@ void bcsp(int nodes, double** p,double** u,double** v)
       }
     }
 
-  for(int i= 0; i<nodes-1;i++)
+  for(int i= 0; i< nodes ;i++)
     {
       for(int j = nodes-1; j< nodes; j++){
 	u[i][j] = u[i][j-1];

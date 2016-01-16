@@ -271,6 +271,50 @@ int main(int argc, char* argv[])
       write_v << "\n";
     }
   write_v.close();
+  
+  
+  std::ofstream write_file1("Output.dat");
+// Write numbers as +x.<13digits>e+00 (width 20)
+write_file1.setf(std::ios::scientific);
+write_file1.precision(16);
+
+assert(write_file1.is_open());
+for (int i=0; i< nodes; i++)
+{
+for(int j=0; j< nodes; j++){
+write_file1 << pnew[i][j] << " "; 
+}
+write_file1 << "\n";
+}
+write_file1.close();
+
+std::ofstream write_file2("x.dat");
+// Write numbers as +x.<13digits>e+00 (width 20)
+write_file2.setf(std::ios::scientific);
+write_file2.precision(16);
+
+assert(write_file2.is_open());
+for (int i=0; i< nodes; i++)
+{
+write_file2 << x[i] << " "; 
+}
+
+
+write_file2.close();
+
+std::ofstream write_file3("y.dat");
+// Write numbers as +x.<13digits>e+00 (width 20)
+write_file3.setf(std::ios::scientific);
+write_file3.precision(16);
+
+assert(write_file3.is_open());
+for (int i=0; i< nodes; i++)
+{
+write_file3 << y[i] << " "; 
+}
+
+write_file3.close();
+
 
   return 0;
 }

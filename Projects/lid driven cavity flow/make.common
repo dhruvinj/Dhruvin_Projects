@@ -1,6 +1,6 @@
 all: RUN
 
-RUN: cfmmidterm.cpp
+RUN: cfmmidterm.cpp *.h
 
 	g++ -o  RUN  cfmmidterm.cpp -O2
 clean: 

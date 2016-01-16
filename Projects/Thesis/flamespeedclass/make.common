@@ -1,0 +1,4 @@
+all: flame
+
+flame: fs.cpp
+	mpicxx fs.cpp -o flame -g -O2 -I${CANTERA_DIR}/include  -L${GSL_DIR}/lib  -L${CANTERA_DIR}/lib -lcantera

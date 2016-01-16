@@ -10,10 +10,11 @@ void tdma(int ibeg , int iend, double* aa, double* bb, double* cc, double* dd);
 
 void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,double res)
 {
-
+//std::cout << "The Residual Smoothing Number = " << res<< "\n";
   double U_ca[nodes][nodes];
   double U_cu[nodes][nodes];
   double U_cv[nodes][nodes];
+
  for(int i = 0; i < nodes; i++)
         {
 	  for(int j = 0; j < nodes; j++){
@@ -25,17 +26,34 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
 	  }
         }
 
-  double* aa = new double[nodes];
-  double* bb = new double[nodes];
-  double* cc = new double[nodes];
-  double* dd = new double[nodes];
+
+for(int i = 0; i < nodes; i++)
+    {
+      for(int j = 0; j < nodes; j++){
+
+	U_ca[i][j] =0;
+	U_cu[i][j] = 0;
+	U_cv[i][j] = 0; 
+		
+      }
+    }
+
+
+  double* aa ;
+    double* bb;
+      double* cc;
+        double* dd;
+  	aa = new double[nodes];
+ 		bb  = new double[nodes];
+  	cc = new double[nodes];
+   	dd = new double[nodes];
 
   for(int j = 0; j<nodes; j++)
     {
       aa[0] = 0;
       bb[0] = 0;
       cc[0] = 0;
-      dd[0] = 0;
+      dd[0] = R_ca[0][j];
       aa[1] = 0;
       bb[1] = 1+2*res;
       cc[1] = -res;
@@ -55,7 +73,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[nodes-1] = 0;
       bb[nodes-1] = 0;
       cc[nodes-1] = 0;
-      dd[nodes-1] = 0;
+      dd[nodes-1] = R_ca[nodes-1][j];
 
       tdma(1,nodes-2, aa, bb, cc, dd);
 
@@ -73,7 +91,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[0] = 0;
       bb[0] = 0;
       cc[0] = 0;
-      dd[0] = 0;	
+      dd[0] = R_cu[0][j];
 	
       aa[1] = 0;
       bb[1] = 1+2*res;
@@ -94,7 +112,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[nodes-1] = 0;
       bb[nodes-1] = 0;
       cc[nodes-1] = 0;
-      dd[nodes-1] = 0;
+      dd[nodes-1] = R_cu[nodes-1][j];
 
       tdma(1,nodes-2, aa, bb, cc, dd);
 
@@ -112,7 +130,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[0] = 0;
       bb[0] = 0;
       cc[0] = 0;
-      dd[0] = 0;
+      dd[0] = R_cv[0][j];
 
       aa[1] = 0;
       bb[1] = 1+2*res;
@@ -133,7 +151,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[nodes-1] = 0;
       bb[nodes-1] = 0;
       cc[nodes-1] = 0;
-      dd[nodes-1] = 0;
+      dd[nodes-1] = R_cv[nodes-1][j];
 
       tdma(1,nodes-2, aa, bb, cc, dd);
 
@@ -151,7 +169,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[0] = 0;
       bb[0] = 0;
       cc[0] = 0;
-      dd[0] = 0;	
+      dd[0] = U_ca[i][0];
 
       aa[1] = 0;
       bb[1] = 1+2*res;
@@ -172,7 +190,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[nodes-1] = 0;
       bb[nodes-1] = 0;
       cc[nodes-1] = 0;
-      dd[nodes-1] = 0;
+      dd[nodes-1] = U_ca[i][nodes-1];
 
       tdma(1,nodes-2, aa, bb, cc, dd);
 
@@ -191,7 +209,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[0] = 0;
       bb[0] = 0;
       cc[0] = 0;
-      dd[0] = 0;	
+      dd[0] =  U_cu[i][0];
 
       aa[1] = 0;
       bb[1] = 1+2*res;
@@ -212,7 +230,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[nodes-1] = 0;
       bb[nodes-1] = 0;
       cc[nodes-1] = 0;
-      dd[nodes-1] = 0;
+      dd[nodes-1] = U_cu[i][nodes-1];
 
       tdma(1,nodes-2, aa, bb, cc, dd);
 
@@ -231,7 +249,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[0] = 0;
       bb[0] = 0;
       cc[0] = 0;
-      dd[0] = 0;	
+      dd[0] = U_cv[i][0];
 
       aa[1] = 0;
       bb[1] = 1+2*res;
@@ -252,7 +270,7 @@ void residualsmoothing(int nodes, double** R_ca, double** R_cu, double** R_cv,do
       aa[nodes-1] = 0;
       bb[nodes-1] = 0;
       cc[nodes-1] = 0;
-      dd[nodes-1] = 0;
+      dd[nodes-1] = U_cv[i][nodes-1];
 
       tdma(1,nodes-2, aa, bb, cc, dd);
 

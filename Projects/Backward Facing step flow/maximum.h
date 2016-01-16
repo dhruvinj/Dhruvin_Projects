@@ -9,7 +9,7 @@ double maximum(double a, double b)
 {
   double max;
 
-  if (a < b)
+  if (a <= b)
     {
       max = b;
     }
