@@ -1,0 +1,16 @@
+## trelis
+## Trelis Version 15.1.3
+## Trelis Build f215c0c
+## Revised Fri Jan 9 16:43:49 2015 -0700
+## Running 11/14/2015 05:07:32 PM
+## Command Options:
+undo on
+open "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub"
+delete surface 9
+delete surface 8
+delete surface 7
+merge all
+measure between vertex 2 and vertex 3
+measure between vertex 2 and vertex 10
+measure between vertex 7 and vertex 10
+save as "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub" overwrite journal

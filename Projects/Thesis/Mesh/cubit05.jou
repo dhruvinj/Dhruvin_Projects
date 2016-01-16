@@ -1,0 +1,15 @@
+## trelis
+## Trelis Version 15.1.3
+## Trelis Build f215c0c
+## Revised Fri Jan 9 16:43:49 2015 -0700
+## Running 11/30/2015 04:27:43 PM
+## Command Options:
+undo on
+open "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub"
+rotate surface 1 2 3 angle 90 about z include_merged
+save as "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub" overwrite journal
+undo group begin
+set large exodus file on
+export mesh "mesh_flame.e" dimension 2 overwrite
+undo group end
+delete mesh surface 1 propagate

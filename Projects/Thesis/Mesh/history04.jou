@@ -1,0 +1,12 @@
+#!python
+cubit.cmd('set node constraint on')
+cubit.cmd('open "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub"')
+cubit.cmd('delete Surface 9')
+cubit.cmd('delete Surface 8')
+cubit.cmd('delete Surface 7')
+cubit.cmd('merge all')
+cubit.cmd('measure beteeen Vertex 2 and Vertex 3')
+cubit.cmd('measure between Vertex 2 and Vertex 3')
+cubit.cmd('measure between Vertex 2 and Vertex 10')
+cubit.cmd('measure between Vertex 7 and Vertex 10')
+cubit.cmd('save as "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub" overwrite journal ')

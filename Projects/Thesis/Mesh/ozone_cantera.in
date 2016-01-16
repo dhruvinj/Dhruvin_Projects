@@ -1,0 +1,141 @@
+
+# Enabled Physics classes
+[Physics]
+
+enabled_physics = 'ReactingLowMachNavierStokes
+                   ReactingLowMachNavierStokesSPGSMStabilization'
+
+[./Chemistry]
+
+species   = 'O O2 O3'
+chem_file = 'ozone_cantera.xml'
+mixture = 'ozone'
+
+# Options for Incompressible Navier-Stokes physics
+[../ReactingLowMachNavierStokes]
+
+species_FE_family = 'LAGRANGE'
+V_FE_family       = 'LAGRANGE'
+P_FE_family       = 'LAGRANGE'
+T_FE_family       = 'LAGRANGE'
+
+species_order = 'FIRST'
+V_order       = 'FIRST'
+T_order       = 'FIRST'
+P_order       = 'FIRST'
+
+# Thermodynamic pressure
+p0 = '1e5' #[Pa]
+
+# Gravity vector
+g = '0.0 0.0' #[m/s^2]
+
+thermochemistry_library = 'cantera'
+
+# Boundary ids:
+# y = y_min --> 0
+# x = x_max --> 1
+# y = y_max --> 2
+# x = x_min --> 3
+vel_bc_ids = '1 2 3 4 5'
+vel_bc_types = 'parabolic_profile no_slip parabolic_profile no_slip axisymmetric'
+
+#parabolic_profile_coeffs_1 = '-2366863.905 0.0 0.0 0.0 0.0 1.0'
+parabolic_profile_coeffs_1 = '-8615384.614 0.0 0.0 0.0 0.0 3.64'
+parabolic_profile_var_1 = 'v'
+parabolic_profile_fix_1 = 'u'
+
+parabolic_profile_coeffs_3 = '-826446.281 0.0 0.0 3223.140496 0.0 -2.14256198'
+parabolic_profile_var_3 = 'v'
+parabolic_profile_fix_3 = 'u'
+
+temp_bc_ids = '1 2 3 5'
+temp_bc_types = 'isothermal isothermal isothermal axisymmetric'
+
+T_wall_1 = '300'
+T_wall_2 = '300'
+T_wall_3 = '300'
+
+species_bc_ids = '1 3'
+species_bc_types = 'prescribed_species prescribed_species'
+
+bound_species_1 = '0.0 0.8 0.2'
+bound_species_3 = '0.0 1.0 0.0'
+
+enable_thermo_press_calc = 'false'
+pin_pressure = 'false'
+
+output_vars = 'mole_fractions'
+
+[]
+
+[restart-options]
+#restart_file = '41run/output.19999.xdr'
+
+#Mesh related options
+[Mesh]
+    [./Read]
+       filename = 'flamemesh.exo'
+[]
+
+
+#[MeshAdaptivity]
+#   mesh_adaptive = 'true'
+#   max_refinement_steps = '2'
+#   absolute_global_tolerance = '0.0'
+#   estimator_type = 'kelly'
+#[]
+
+[Stabilization]
+   tau_constant = '50.0'
+   tau_factor = '5.0'
+[]
+
+# Options for tiem solvers
+[unsteady-solver]
+transient = 'true'
+theta = '1.0'
+deltat = '0.1e-8'
+n_timesteps = '10000' 
+
+[]
+
+#Linear and nonlinear solver options
+[linear-nonlinear-solver]
+continue_after_max_iterations = 'true'
+max_nonlinear_iterations = '200'
+max_linear_iterations = '2500'
+
+use_numerical_jacobians_only = 'true'
+
+relative_residual_tolerance = '1.0e-8'
+relative_step_tolerance = '1.0e-5'
+
+[]
+
+# Visualization options
+[vis-options]
+output_vis = 'true'
+
+vis_output_file_prefix = 'output' 
+
+output_residual = 'false'
+
+output_format = 'ExodusII xdr'
+
+[]
+
+# Options for print info to the screen
+[screen-options]
+
+system_name = 'BunsenOzone'
+
+print_equation_system_info = 'true'
+print_mesh_info = 'true'
+print_log_info = 'true'
+solver_verbose = 'true'
+solver_quiet = 'false'
+
+print_element_jacobians = 'false'
+
+[]

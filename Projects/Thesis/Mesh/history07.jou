@@ -1,0 +1,7 @@
+#!python
+cubit.cmd('set node constraint on')
+cubit.cmd('open "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub"')
+cubit.cmd('undo group begin')
+cubit.cmd('set large exodus file on')
+cubit.cmd('export mesh "flamemesh.e" dimension 2 overwrite ')
+cubit.cmd('undo group end')

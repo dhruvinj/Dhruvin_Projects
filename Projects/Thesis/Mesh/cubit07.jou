@@ -1,0 +1,12 @@
+## trelis
+## Trelis Version 15.1.3
+## Trelis Build f215c0c
+## Revised Fri Jan 9 16:43:49 2015 -0700
+## Running 12/03/2015 02:06:59 PM
+## Command Options:
+undo on
+open "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub"
+undo group begin
+set large exodus file on
+export mesh "flamemesh.e" dimension 2 overwrite
+undo group end

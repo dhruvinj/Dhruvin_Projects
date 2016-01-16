@@ -1,0 +1,3 @@
+#!python
+cubit.cmd('set node constraint on')
+cubit.cmd('open "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub"')

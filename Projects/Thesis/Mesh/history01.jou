@@ -1,0 +1,12 @@
+#!python
+cubit.cmd('set node constraint on')
+cubit.cmd('open "/eng/home/dhruvinj/Desktop/Mesh/cubit01.cub"')
+cubit.cmd('sideset 5 sideset 5')
+cubit.cmd('undo on')
+cubit.cmd('set multisweep off')
+cubit.cmd('undo')
+cubit.cmd('undo')
+cubit.cmd('undo')
+cubit.cmd('undo')
+cubit.cmd('undo')
+cubit.cmd('undo')
