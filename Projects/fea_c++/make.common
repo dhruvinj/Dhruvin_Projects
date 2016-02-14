@@ -1,0 +1,10 @@
+all: 1Run 2Run
+
+1Run: first_fea.cpp
+	g++ -o 1Run  first_fea.cpp 
+
+2Run: problem2_fea.cpp
+	g++ -o 2Run  problem2_fea.cpp 
+
+clean: 
+	rm 1Run 2Run

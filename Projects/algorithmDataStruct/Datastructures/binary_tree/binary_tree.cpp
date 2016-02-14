@@ -79,6 +79,53 @@ bool node_search(tree_node* root, int data)
 
 }
 
+int node_min(tree_node* root)
+{
+  if(root == NULL)
+    {
+      std::cout << "The tree is empty" << std::endl;
+      return -1;
+    }
+
+  while(root->left != NULL)
+    {
+      root = root->left;
+    }
+ 
+      return root->data;
+
+}
+
+int node_max(tree_node* root)
+{
+  if(root == NULL)
+    {
+      std::cout << "The tree is empty" << std::endl;
+      return -1;
+    }
+
+  while(root->right != NULL)
+    {
+      root = root->right;
+    }
+ 
+      return root->data;
+
+}
+
+int tree_height(tree_node* root)
+{
+  if(root == NULL)
+    {
+      std::cout << "The tree is empty" << std::endl;
+      return -1;
+    }
+ 
+      return std::max(tree_height(root->left), tree_height(root->right)) + 1;
+
+}
+
+
 int main(int argc, char* argv[])
 {
   tree_node* root = NULL;
@@ -104,7 +151,10 @@ else
 std::cout << "not found" << std::endl; 
 
 }
-  
+
+std::cout << "the max element of the tree is " << " " << node_max(root) << std::endl;
+std::cout << "the min element of the tree is " << " " << node_min(root) << std::endl;
+std::cout << "the height of the tree is " << " " << tree_height(root) << std::endl;
 
   return 0;
 }
