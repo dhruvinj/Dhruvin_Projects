@@ -1,10 +1,4 @@
 #include<iostream>
-#include<cmath>
-#include<string>
-#include<cassert>
-#include<fstream>
-#include<cstdlib>
-#include<ctime>
 #include<vector>
 class Queue
 {
