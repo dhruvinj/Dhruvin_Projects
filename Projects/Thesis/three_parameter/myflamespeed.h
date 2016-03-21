@@ -25,16 +25,16 @@ class myflamespeed
   int flamespeed(int np, void* p, double& fspeed, double param_values_1, double param_values_2, double param_values_3, int rank, int count )
   {
     std::stringstream rankstream;
-      std::stringstream countstream;
+    std::stringstream countstream;
 
-      rankstream << rank ;
-      countstream << count;
+    rankstream << rank ;
+    countstream << count;
 	
-      std::string filename = "dummy_rank"+rankstream.str()+"_count"+countstream.str()+".xml";
+    std::string filename = "dummy_rank"+rankstream.str()+"_count"+countstream.str()+".xml";
 
     try {
     
-    param_values_3 = exp(param_values_3);
+      param_values_3 = exp(param_values_3);
     
     
       std::stringstream ss_1;
@@ -115,7 +115,7 @@ class myflamespeed
 
       doublereal rho_out = gas.density();
       doublereal Tad=gas.temperature();
-    //  std::cout << phi<<' '<<Tad<<std::endl;
+      //  std::cout << phi<<' '<<Tad<<std::endl;
 
       //double Tin=temp;
       //double Tout=Tad;
@@ -254,8 +254,8 @@ class myflamespeed
       flow.solveEnergyEqn();
       flame.solve(loglevel,refine_grid);
       double flameSpeed_mix = flame.value(flowdomain,flow.componentIndex("u"),0);
-  //    std::cout << "Flame speed with mixture-averaged transport: " <<
-//	flame.value(flowdomain,flow.componentIndex("u"),0) << " m/s" << std::endl;
+      //    std::cout << "Flame speed with mixture-averaged transport: " <<
+      //	flame.value(flowdomain,flow.componentIndex("u"),0) << " m/s" << std::endl;
 
        
 
@@ -273,7 +273,7 @@ class myflamespeed
       }
 
       // std::cout << std::endl<<"Adiabatic flame temperature from equilibrium is: "<<Tad<<std::endl;
-   //   std::cout << "Flame speed for phi="<<phi<<" is "<<Uvec[0]<<" m/s."<<std::endl;
+      //   std::cout << "Flame speed for phi="<<phi<<" is "<<Uvec[0]<<" m/s."<<std::endl;
       fspeed= Uvec[0];
       std::string reportFile = "flamespeed.csv";
       FILE* FP = fopen(reportFile.c_str(), "w");
@@ -282,36 +282,28 @@ class myflamespeed
 	exit(-1);
       }
 
-      //   fprintf(FP," Flame speed (mixture-averaged      ) = %11.3e m/s\n", flameSpeed_mix);
-      //fprintf(FP," Flame speed (multicomponent        ) = %11.3e m/s\n", flameSpeed_multi);
-      //fprintf(FP," Flame speed (multicomponent + Soret) = %11.3e m/s\n", flameSpeed_full);
-      //   fprintf(FP,"  Grid,   Temperature,   Uvec,   O3,    O2\n");
-      // for (int n = 0; n < np; n++) {
-      //     fprintf(FP," %11.3e, %11.3e, %11.3e, %11.3e, %11.3e\n",
-      //              flow.grid(n), Tvec[n], Uvec[n], O3vec[n], O2vec[n]);
-      // }
         
       if( remove( filename.c_str() ) != 0 )
 	{
-	//  perror( "Error deleting file" );
+	  //  perror( "Error deleting file" );
 	}
       else
 	{
-	//  puts( "File successfully deleted" );
+	  //  puts( "File successfully deleted" );
 	}
     
       fclose(FP);
     } catch (Cantera::CanteraError& err) {
       std::cerr << err.what() << std::endl;
-   //   std::cerr << "Flame speed calculation failed. Setting flame speed to -1.0" << std::endl;
+      //   std::cerr << "Flame speed calculation failed. Setting flame speed to -1.0" << std::endl;
       fspeed = -1.0;
       if( remove( filename.c_str() ) != 0 )
-  {
-	//  perror( "Error deleting file" );
+	{
+	  //  perror( "Error deleting file" );
 	}
       else
 	{
-	//  puts( "File successfully deleted" );
+	  //  puts( "File successfully deleted" );
 	}
       return -1;
     }

@@ -27,85 +27,85 @@ class Likelihood : public QUESO::GaussianLikelihoodDiagonalCovariance<V, M>
 {
 protected:
   
- // QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_20;
- // QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_28;
+  // QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_20;
+  // QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_28;
   QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_40;
-	QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_46;
+  QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_46;
   QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_53;
   QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_75;
-	QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_100;
+  QUESO::LinearLagrangeInterpolationSurrogate<V,M>* _flame_surrogate_100;
 	 
 	 
 	 
-	// QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_20;
-	// QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_28;
-	 QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_40;
-	 QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_46;
-	 QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_53;
-	 QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_75;
-	 QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_100;
- // Instantiate GSL version of this class
- // template class QUESO::LinearLagrangeInterpolationSurrogate<QUESO::GslVector,QUESO::GslMatrix> flame_surrogate;
+  // QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_20;
+  // QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_28;
+  QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_40;
+  QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_46;
+  QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_53;
+  QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_75;
+  QUESO::InterpolationSurrogateIOASCII<V,M>* _interp_100;
+  // Instantiate GSL version of this class
+  // template class QUESO::LinearLagrangeInterpolationSurrogate<QUESO::GslVector,QUESO::GslMatrix> flame_surrogate;
 public:
 
   Likelihood(const char * prefix, const QUESO::VectorSet<V, M> & domain,
-      const V & observations, const V & covariance, QUESO::FullEnvironment& env , QUESO::InterpolationSurrogateIOASCII<QUESO::GslVector, QUESO::GslMatrix>&  data_reader )
+	     const V & observations, const V & covariance, QUESO::FullEnvironment& env , QUESO::InterpolationSurrogateIOASCII<QUESO::GslVector, QUESO::GslMatrix>&  data_reader )
     : QUESO::GaussianLikelihoodDiagonalCovariance<V, M>(prefix, domain,
-        observations, covariance)
+							observations, covariance)
   {
   
    
   
-   //std::string flame_20_filename = "flamespeed_20.dat";     
-   //std::string flame_28_filename = "flamespeed_28.dat";
-   std::string flame_40_filename = "flamespeed_40.dat";
-   std::string flame_46_filename = "flamespeed_46.dat";
-   std::string flame_53_filename = "flamespeed_53.dat";
-   std::string flame_75_filename = "flamespeed_75.dat";
-   std::string flame_100_filename = "flamespeed_100.dat";
+    //std::string flame_20_filename = "flamespeed_20.dat";     
+    //std::string flame_28_filename = "flamespeed_28.dat";
+    std::string flame_40_filename = "flamespeed_40.dat";
+    std::string flame_46_filename = "flamespeed_46.dat";
+    std::string flame_53_filename = "flamespeed_53.dat";
+    std::string flame_75_filename = "flamespeed_75.dat";
+    std::string flame_100_filename = "flamespeed_100.dat";
   
   
   
   
   
-  //_interp_20 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
-  //_interp_28 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
-  _interp_40 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
-  _interp_46 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
-  _interp_53 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
-  _interp_75 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
-  _interp_100 =new QUESO::InterpolationSurrogateIOASCII<V,M>;
+    //_interp_20 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
+    //_interp_28 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
+    _interp_40 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
+    _interp_46 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
+    _interp_53 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
+    _interp_75 = new QUESO::InterpolationSurrogateIOASCII<V,M>;
+    _interp_100 =new QUESO::InterpolationSurrogateIOASCII<V,M>;
   
   
  
-  //_interp_20->read( flame_20_filename, env, "param_");
-  //_interp_28->read( flame_28_filename, env, "param_");
-  _interp_40->read( flame_40_filename, env, "param_");
-  _interp_46->read( flame_46_filename, env, "param_");  
-  _interp_53->read( flame_53_filename, env, "param_");
-  _interp_75->read( flame_75_filename, env, "param_");
-  _interp_100->read( flame_100_filename, env, "param_");
+    //_interp_20->read( flame_20_filename, env, "param_");
+    //_interp_28->read( flame_28_filename, env, "param_");
+    _interp_40->read( flame_40_filename, env, "param_");
+    _interp_46->read( flame_46_filename, env, "param_");  
+    _interp_53->read( flame_53_filename, env, "param_");
+    _interp_75->read( flame_75_filename, env, "param_");
+    _interp_100->read( flame_100_filename, env, "param_");
   
-   /*
-   data_reader.read( "flamespeed.dat", env, "param_" );
-   data_reader.read( "flamespeed_100.dat", env, "param_" );
-*/
-  // Grab a reference to the data built in the reader
-//  const QUESO::InterpolationSurrogateData<V,M>& data = data_reader.data();
+    /*
+      data_reader.read( "flamespeed.dat", env, "param_" );
+      data_reader.read( "flamespeed_100.dat", env, "param_" );
+    */
+    // Grab a reference to the data built in the reader
+    //  const QUESO::InterpolationSurrogateData<V,M>& data = data_reader.data();
 
-  // The reader read in the data, so now we can give the data
-  // to the interpolation surrogate. This object can now be used in a likelihood
-  // function for example. Here, we just illustrate calling the surrogate model
-  // evaluation.
+    // The reader read in the data, so now we can give the data
+    // to the interpolation surrogate. This object can now be used in a likelihood
+    // function for example. Here, we just illustrate calling the surrogate model
+    // evaluation.
   
 
-  //_flame_surrogate_20 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_20->data() ); 
-  //_flame_surrogate_28 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_28->data() );
-  _flame_surrogate_40 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_40->data() );
-  _flame_surrogate_46 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_46->data() );
-  _flame_surrogate_53 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_53->data() );
-  _flame_surrogate_75 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_75->data() );
-  _flame_surrogate_100 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_100->data() );
+    //_flame_surrogate_20 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_20->data() ); 
+    //_flame_surrogate_28 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_28->data() );
+    _flame_surrogate_40 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_40->data() );
+    _flame_surrogate_46 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_46->data() );
+    _flame_surrogate_53 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_53->data() );
+    _flame_surrogate_75 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_75->data() );
+    _flame_surrogate_100 = new QUESO::LinearLagrangeInterpolationSurrogate<V,M> ( _interp_100->data() );
   
   }
 
@@ -116,36 +116,36 @@ public:
      
     // delete  _flame_surrogate_20;
     // delete  _flame_surrogate_28;
-     delete  _flame_surrogate_40;
-     delete  _flame_surrogate_46;
-     delete  _flame_surrogate_53;
-     delete  _flame_surrogate_75;
-     delete  _flame_surrogate_100;
+    delete  _flame_surrogate_40;
+    delete  _flame_surrogate_46;
+    delete  _flame_surrogate_53;
+    delete  _flame_surrogate_75;
+    delete  _flame_surrogate_100;
      
      
 
     //  delete _interp_20;
     //  delete _interp_28;
-      delete _interp_40;
-      delete _interp_46;
-      delete _interp_53;
-      delete _interp_75;
-      delete _interp_100;
+    delete _interp_40;
+    delete _interp_46;
+    delete _interp_53;
+    delete _interp_75;
+    delete _interp_100;
   }
 
   virtual void evaluateModel(const V & domainVector, const V * domainDirection,
-      V & modelOutput, V * gradVector, M * hessianMatrix,
-      V * hessianEffect) const
+			     V & modelOutput, V * gradVector, M * hessianMatrix,
+			     V * hessianEffect) const
   {
    
 
-   //double value_20 = _flame_surrogate_20->evaluate(domainVector);
-   //double value_28 = _flame_surrogate_28->evaluate(domainVector);
-   double value_40 = _flame_surrogate_40->evaluate(domainVector);
-   double value_46 = _flame_surrogate_46->evaluate(domainVector);
-   double value_53 = _flame_surrogate_53->evaluate(domainVector);
-   double value_75 = _flame_surrogate_75->evaluate(domainVector);
-   double value_100 = _flame_surrogate_100->evaluate(domainVector);
+    //double value_20 = _flame_surrogate_20->evaluate(domainVector);
+    //double value_28 = _flame_surrogate_28->evaluate(domainVector);
+    double value_40 = _flame_surrogate_40->evaluate(domainVector);
+    double value_46 = _flame_surrogate_46->evaluate(domainVector);
+    double value_53 = _flame_surrogate_53->evaluate(domainVector);
+    double value_75 = _flame_surrogate_75->evaluate(domainVector);
+    double value_100 = _flame_surrogate_100->evaluate(domainVector);
   
  
   
@@ -153,8 +153,8 @@ public:
     for (unsigned int i = 0; i < modelOutput.sizeLocal(); i++) {
       
       
-     // modelOutput[0] = value_20;
-     // modelOutput[1] = value_28;
+      // modelOutput[0] = value_20;
+      // modelOutput[1] = value_28;
       modelOutput[0] = value_40;
       modelOutput[1] = value_46;    
       modelOutput[2] = value_53;
@@ -183,16 +183,16 @@ int main(int argc, char ** argv)
   // paramMinValues [0] = log(1.3e+12);
   // paramMaxValues [0] = log(10.4e+12);
   paramMinValues [0] = -20;
-    paramMaxValues [0] = 40;
+  paramMaxValues [0] = 40;
 
-    // the activation energy variation of O + O3 [=] O2 + O2 reaction(3)
-    paramMinValues [1] = -30;
-    paramMaxValues [1] = 90;
+  // the activation energy variation of O + O3 [=] O2 + O2 reaction(3)
+  paramMinValues [1] = -30;
+  paramMaxValues [1] = 90;
 
 
 
-     paramMinValues [2] = log(7.201e+10);
-    paramMaxValues [2] = log(2.5e+17);
+  paramMinValues [2] = log(7.201e+10);
+  paramMaxValues [2] = log(2.5e+17);
 
   QUESO::BoxSubset<QUESO::GslVector, QUESO::GslMatrix> paramDomain("param_",paramSpace, paramMinValues, paramMaxValues);
 
@@ -233,85 +233,85 @@ int main(int argc, char ** argv)
 						       observations, covariance,env ,data_reader );
     
   QUESO::GslVector guess(paramSpace.zeroVector());
-   /*
-  guess[0] = 1.643613e+01;
-  guess[1] =  3.868542e+01;
-  guess[2] = 3.134539e+01;
-    */
+  /*
+    guess[0] = 1.643613e+01;
+    guess[1] =  3.868542e+01;
+    guess[2] = 3.134539e+01;
+  */
     
        
-   if( env.subRank()  == 0 )
+  if( env.subRank()  == 0 )
     {
-    guess[2] =   25.5;
-    guess[1] =  -29.0000;
-    guess[0] =  -19.0000;
+      guess[2] =   25.5;
+      guess[1] =  -29.0000;
+      guess[0] =  -19.0000;
     }
    
-      if( env.subRank() == 1 )
+  if( env.subRank() == 1 )
     {
-    guess[2] = 26.6734;
-    guess[1] =  -16.6667;
-    guess[0] =  -13.3333;
+      guess[2] = 26.6734;
+      guess[1] =  -16.6667;
+      guess[0] =  -13.3333;
     }
     
-      if( env.subRank() == 2 )
+  if( env.subRank() == 2 )
     {
-    guess[2] = 28.3468;
-    guess[1] =  -3.3333;
-    guess[0] =  -6.6667;
+      guess[2] = 28.3468;
+      guess[1] =  -3.3333;
+      guess[0] =  -6.6667;
     
     }
     
-      if( env.subRank() == 3 )
+  if( env.subRank() == 3 )
     {
-    guess[2] = 30.0201;
-    guess[1] =  10.0000;
-    guess[0] =   0 ;
-    }
-    
-    
-      if( env.subRank() == 4 )
-    {
-    guess[2] = 31.6935;
-    guess[1] =   23.3333;
-    guess[0] =  6.6667;
+      guess[2] = 30.0201;
+      guess[1] =  10.0000;
+      guess[0] =   0 ;
     }
     
     
-      if( env.subRank() == 5 )
+  if( env.subRank() == 4 )
     {
-    guess[2] = 33.3668;
-    guess[1] =   36.6667;
-    guess[0] =  13.3333;
+      guess[2] = 31.6935;
+      guess[1] =   23.3333;
+      guess[0] =  6.6667;
     }
     
     
-      if( env.subRank() == 6 )
+  if( env.subRank() == 5 )
     {
-    guess[2] = 38.3869;
-    guess[1] =  50.0000;
-    guess[0] =  20.0000;
+      guess[2] = 33.3668;
+      guess[1] =   36.6667;
+      guess[0] =  13.3333;
     }
     
-      if( env.subRank() == 7 )
+    
+  if( env.subRank() == 6 )
     {
-    guess[2] = 35.0402;
-    guess[1] =  63.333;
-    guess[0] =  26.6667;
+      guess[2] = 38.3869;
+      guess[1] =  50.0000;
+      guess[0] =  20.0000;
     }
     
-      if( env.subRank() == 8 )
+  if( env.subRank() == 7 )
     {
-    guess[2] = 36.7135;
-    guess[1] =  76.6667;
-    guess[0] =  33.3333 ;
+      guess[2] = 35.0402;
+      guess[1] =  63.333;
+      guess[0] =  26.6667;
     }
     
-      if( env.subRank() == 9 )
+  if( env.subRank() == 8 )
     {
-    guess[2] = 39.8;
-    guess[1] =  86.6667;
-    guess[0] =  36;
+      guess[2] = 36.7135;
+      guess[1] =  76.6667;
+      guess[0] =  33.3333 ;
+    }
+    
+  if( env.subRank() == 9 )
+    {
+      guess[2] = 39.8;
+      guess[1] =  86.6667;
+      guess[0] =  36;
     }
     
     

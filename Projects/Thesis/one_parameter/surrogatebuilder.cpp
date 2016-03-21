@@ -28,32 +28,32 @@
 
 
 
- template<class Vec,class Mat>
+template<class Vec,class Mat>
 class ModelInterpolationBuilder : public QUESO::InterpolationSurrogateBuilder<Vec,Mat>
-  {
+{
   
   
-  public:
-    ModelInterpolationBuilder( QUESO::InterpolationSurrogateDataSet<Vec,Mat>& data, myflamespeed& model )
+public:
+  ModelInterpolationBuilder( QUESO::InterpolationSurrogateDataSet<Vec,Mat>& data, myflamespeed& model )
     : QUESO::InterpolationSurrogateBuilder<Vec,Mat>(data),  _model(model), _count(0)
   {}
 
-    virtual ~ModelInterpolationBuilder(){};
+  virtual ~ModelInterpolationBuilder(){};
 
-    virtual void evaluate_model( const Vec& domainVector,
-                                 std::vector<double>& values )
+  virtual void evaluate_model( const Vec& domainVector,
+			       std::vector<double>& values )
                                  
-{
-/*
+  {
+    /*
     // Only print out progress indicator on rank 0
     if( this->_model.get_model().param_space().env().fullRank() == 0 )
-      std::cout << "ModelInterpolationBuilder evaluation " << _count << std::endl;
-*/
+    std::cout << "ModelInterpolationBuilder evaluation " << _count << std::endl;
+    */
     //********************************************************************
     // Copy contents of domainVector to std::vector.
     // Doing this copy so we don't have to template the parameters class.
     //********************************************************************
-   unsigned int num_params = domainVector.sizeGlobal();
+    unsigned int num_params = domainVector.sizeGlobal();
 
 
 
@@ -66,21 +66,21 @@ class ModelInterpolationBuilder : public QUESO::InterpolationSurrogateBuilder<Ve
 
     _model.flamespeed(0,0,flamespd, param_1, rank, _count);
   
-     values[0] = flamespd;
+    values[0] = flamespd;
        
     _count++;
-    }
+  }
   
   
 
    
-  private:
+private:
 
   
-		 myflamespeed _model;
-    unsigned int _count;
+  myflamespeed _model;
+  unsigned int _count;
 
-  };
+};
 
 
 
@@ -90,37 +90,37 @@ int main(int argc, char ** argv)
 
   MPI_Init(&argc,&argv);
 
- {
+  {
 
 
- QUESO::FullEnvironment env(MPI_COMM_WORLD, argv[1], "", NULL);
- QUESO::VectorSpace<QUESO::GslVector, QUESO::GslMatrix> paramSpace(env, "param_", 1, NULL);
+    QUESO::FullEnvironment env(MPI_COMM_WORLD, argv[1], "", NULL);
+    QUESO::VectorSpace<QUESO::GslVector, QUESO::GslMatrix> paramSpace(env, "param_", 1, NULL);
 
-  double min_val = -10;
-  double max_val = 40;
+    double min_val = -10;
+    double max_val = 40;
 
-  QUESO::GslVector paramMins(paramSpace.zeroVector());
-  paramMins.cwSet(min_val);
-  QUESO::GslVector paramMaxs(paramSpace.zeroVector());
-  paramMaxs.cwSet(max_val);
+    QUESO::GslVector paramMins(paramSpace.zeroVector());
+    paramMins.cwSet(min_val);
+    QUESO::GslVector paramMaxs(paramSpace.zeroVector());
+    paramMaxs.cwSet(max_val);
 
-  QUESO::BoxSubset<QUESO::GslVector, QUESO::GslMatrix> paramDomain("param_",paramSpace, paramMins, paramMaxs);
+    QUESO::BoxSubset<QUESO::GslVector, QUESO::GslMatrix> paramDomain("param_",paramSpace, paramMins, paramMaxs);
 
-  unsigned int n_datasets = 1;
-  const std::vector<unsigned int> n_points(1,1000);
+    unsigned int n_datasets = 1;
+    const std::vector<unsigned int> n_points(1,1000);
 
 
-  QUESO::InterpolationSurrogateDataSet<QUESO::GslVector, QUESO::GslMatrix>  data(paramDomain,  n_points,  n_datasets);
+    QUESO::InterpolationSurrogateDataSet<QUESO::GslVector, QUESO::GslMatrix>  data(paramDomain,  n_points,  n_datasets);
 
  
-  myflamespeed gas;
+    myflamespeed gas;
  
  
-	ModelInterpolationBuilder<QUESO::GslVector,QUESO::GslMatrix> builder( data, gas );
+    ModelInterpolationBuilder<QUESO::GslVector,QUESO::GslMatrix> builder( data, gas );
 
  
   
- builder.build_values();
+    builder.build_values();
 
     // Now that we've built the data, we write it out so we can reuse it later
     QUESO::InterpolationSurrogateIOASCII<QUESO::GslVector, QUESO::GslMatrix>
@@ -130,9 +130,9 @@ int main(int argc, char ** argv)
 
 
 
-}
+  }
 
-	    MPI_Finalize();
+  MPI_Finalize();
 
   return 0;
 }
